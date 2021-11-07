@@ -49,6 +49,10 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        Request()->validate([
+            'event_poster' => 'image',
+        ]);
+
         Event::create([
             'event_name' => $request->event_name,
             'band_id' => $request->band_id,
@@ -113,6 +117,10 @@ class EventController extends Controller
         $id = $request->id;
 
         $poster = $request->file('event_poster');
+
+        Request()->validate([
+            'event_poster' => 'image',
+        ]);
 
         if ($poster) {
             Storage::delete($request->oldImage);

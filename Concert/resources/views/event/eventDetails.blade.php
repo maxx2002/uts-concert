@@ -63,11 +63,13 @@
                 <div class="row">
                     <div class="col">
                         <div class="card bg-lightblue text-white">
+                          <a href="{{ route('bands.show', $event->bands->id) }}">
                             <img src="{{ asset('storage/'.$event->bands->band_poster) }}" class="card-img-top" alt="..." style="height: 150px">
                             <div class="card-body">
-                              <p>Special Performance By</p>
+                              <p class="text-white">Special Performance By</p>
                               <h5 class="card-title text-tosca"><i class="fas fa-music"></i> {{ $event->bands->band_name }}</h5>                      
                             </div>
+                          </a>
                         </div>
                     </div>
                     <div class="col">

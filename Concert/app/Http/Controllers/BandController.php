@@ -48,6 +48,11 @@ class BandController extends Controller
      */
     public function store(Request $request)
     {
+        Request()->validate([
+            'event_poster' => 'image',
+            'band_email' => 'email'
+        ]);
+
         Band::create([
             'band_name' => $request->band_name,
             'genre' => $request->genre,
@@ -106,6 +111,11 @@ class BandController extends Controller
         $id = $request->id;
 
         $poster = $request->file('band_poster');
+
+        Request()->validate([
+            'band_poster' => 'image',
+            'band_email' => 'email'
+        ]);
 
         if ($poster) {
             Storage::delete($request->oldImage);
