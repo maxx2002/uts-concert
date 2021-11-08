@@ -49,7 +49,7 @@ class BandController extends Controller
     public function store(Request $request)
     {
         Request()->validate([
-            'event_poster' => 'image',
+            'band_poster' => 'image',
             'band_email' => 'email'
         ]);
 

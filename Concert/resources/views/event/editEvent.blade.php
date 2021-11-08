@@ -15,7 +15,12 @@
                 <div class="form-group">
                     <label for="event_poster">Event Poster</label>
                     <input type="hidden" name="oldImage" value="{{ $event->event_poster }}">
-                    <input class="form-control" id="event_poster" type="file" name="event_poster" onchange="previewImage2()">
+                    <input class="form-control @error('event_poster') is-invalid @enderror" id="event_poster" type="file" name="event_poster" onchange="previewImage2()">
+                    @error('event_poster')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                     <img style="max-height: 479px" class="img-preview img-fluid mt-3" src="{{ asset('storage/'.$event->event_poster) }}" alt="">                    
                 </div>
             </div>

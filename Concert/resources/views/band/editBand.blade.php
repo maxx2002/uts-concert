@@ -15,7 +15,12 @@
                 <div class="form-group">
                     <label for="band_poster">Band Poster</label>
                     <input type="hidden" name="oldImage" value="{{ $band->band_poster }}">
-                    <input class="form-control" id="band_poster" type="file" name="band_poster" onchange="previewImage()">
+                    <input class="form-control @error('band_poster') is-invalid @enderror" id="band_poster" type="file" name="band_poster" onchange="previewImage()">
+                    @error('band_poster')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                     <img style="max-height: 291px" class="img-preview img-fluid mt-3" src="{{ asset('storage/'.$band->band_poster) }}" alt="">                    
                 </div>
             </div>
@@ -62,19 +67,24 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="">band_member</label>
+                    <label for="">Band Member</label>
                     <input type="text" class="form-control" name="band_member" value="{{ $band->band_member }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="">band_price</label>
+                    <label for="">Band Price</label>
                     <input type="text" class="form-control" name="band_price" value="{{ $band->band_price }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="">band_email</label>
-                    <input type="text" class="form-control" name="band_email" value="{{ $band->band_email }}" required>
+                    <label for="">Band Email</label>
+                    <input type="text" class="form-control @error('band_email') is-invalid @enderror" name="band_email" value="{{ $band->band_email }}" required>
+                    @error('band_email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
-                    <label for="">band_phone</label>
+                    <label for="">Band Phone</label>
                     <input type="text" class="form-control" name="band_phone" value="{{ $band->band_phone }}" required>
                 </div>
                 <div class="form-group mt-3 d-flex justify-content-end">
